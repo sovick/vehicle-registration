@@ -2,13 +2,13 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export default class Manufacturer {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('increment')
     id: number
 
     @Column()
-    ManufacturerName : string;
+    manufacturerName : string;
 
     @Column()
-    Country : string;
+    country : string;
 
 }
