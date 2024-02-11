@@ -10,7 +10,9 @@ export class VehicleModel1707661088779 implements MigrationInterface {
                     {
                         name : "id",
                         type : "int",
-                        isPrimary : true
+                        isPrimary : true,
+                        isGenerated: true,
+                        generationStrategy: "increment",
                     },{
                         name : "manufacturerID",
                         type : "int",  

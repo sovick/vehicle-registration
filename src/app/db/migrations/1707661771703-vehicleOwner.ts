@@ -10,7 +10,9 @@ export class VehicleOwner1707661771703 implements MigrationInterface {
                     {
                         name : "id",
                         type : "int",
-                        isPrimary : true
+                        isPrimary : true,
+                        isGenerated: true,
+                        generationStrategy: "increment",
                     },{
                         name : "firstName",
                         type : "varchar",  

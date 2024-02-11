@@ -10,7 +10,9 @@ export class Manufacturer1707660625814 implements MigrationInterface {
                     {
                         name : "id",
                         type : "int",
-                        isPrimary : true
+                        isPrimary : true,
+                        isGenerated: true,
+                        generationStrategy: "increment",
                     },{
                         name : "manufacturerName",
                         type : "varchar",  
