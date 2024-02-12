@@ -87,4 +87,70 @@ export default class VehicleController {
             
         }
     }
+
+    async getAllVehicles(req: Request, res: Response){
+        try {
+
+            const vehicleRepository = AppDataSource.getRepository(Vehicle);
+
+            const allVehicleDetails = await vehicleRepository.find({
+                relations : {
+                    modelID : true,
+                    ownerID : true
+                }
+            });
+
+            return res.status(200).json({
+                status : 'success',
+                allVehicleDetails
+            })
+        
+        } catch (e) {
+            return res.status(500).json({
+                status : "error",
+                message : "server error"
+            })   
+        }
+    }
+
+    async getVehicle(req : Request, res : Response){
+        try{
+
+            const { vin : VIN } = req.params;
+
+            const vehicleRepository = AppDataSource.getRepository(Vehicle);
+
+            const vehicleDetails = await vehicleRepository.findOne({
+                where : {
+                    VIN 
+                },
+                relations : {
+                    modelID : true,
+                    ownerID : true
+                }
+            });
+
+            if(!vehicleDetails){
+                return res.status(404).json({
+                    status : "error",
+                    message : "entry not found"
+                })
+            }
+
+            return res.status(200).json({
+                status : "success",
+                vehicleDetails
+            })
+
+
+        }catch(e){
+            return res.status(500).json({
+                status : "error",
+                message : "server error"
+            })  
+        }
+    }
+
+
+
 }
