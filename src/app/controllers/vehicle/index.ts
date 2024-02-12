@@ -151,6 +151,104 @@ export default class VehicleController {
         }
     }
 
+    async updateVehicleDetails(req : Request, res : Response){
+
+        try {
+            
+            const { vin : VIN } = req.params;
+            const { color, purchaseDate, purchasePrice } = req.body.data;
+
+            const vehicleRepository = AppDataSource.getRepository(Vehicle);
+
+            const vehicleData = await vehicleRepository.findOne({
+                where : {
+                    VIN
+                }
+            });
+
+            if(!vehicleData){
+                return res.status(404).json({
+                    status : "error",
+                    message : "resource does not exist"
+                })
+            }
+
+            interface Payload {
+                color?: string;
+                purchaseDate?:Date,
+                purchasePrice?:number
+            }
+
+            const updatePayload : Payload = {}
+
+            if(color){
+                updatePayload["color"] = color
+            }
+
+            if(purchaseDate){
+                updatePayload["purchaseDate"] = purchaseDate
+            }
+
+            if(purchasePrice){
+                updatePayload["purchasePrice"] = purchasePrice
+            }
+
+            await vehicleRepository.update({VIN},{
+                ...updatePayload
+            });
+
+
+            return res.status(200).json({
+                status :  "success",
+                message : "details updated successfully"
+            });
+
+
+        } catch (e) {
+            return res.status(500).json({
+                status : "error",
+                message : "server error"
+            })  
+        }
+    }
+
+
+    async deleteVehicleDetails(req: Request, res :Response){
+        try{
+
+            const { vin : VIN } = req.params;
+
+            const vehicleRepository = AppDataSource.getRepository(Vehicle);
+
+            const vehicleData = await vehicleRepository.findOne({
+                where : {
+                    VIN
+                }
+            });
+
+            if(!vehicleData){
+                return res.status(404).json({
+                    status : "error",
+                    message : "resource does not exist"
+                })
+            }
+
+            await vehicleRepository.delete({VIN});
+
+            return res.status(200).json({
+                status : 'success',
+                message : "resource removed successfully"
+            });
+
+
+        }catch(e){
+            return res.status(500).json({
+                status : "error",
+                message : "server error"
+            })  
+
+        }
+    }
 
 
 }

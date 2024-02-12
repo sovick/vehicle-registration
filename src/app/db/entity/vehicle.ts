@@ -19,11 +19,11 @@ export default class Vehicle {
     @Column()
     purchasePrice : number;
 
-    @OneToOne(() => vehicleModel,{cascade : true})
+    @OneToOne(() => vehicleModel,{cascade : true, onDelete: 'CASCADE'})
     @JoinColumn({name : 'modelID'})
     modelID : vehicleModel
 
-    @OneToOne(() => vehicleOwner,{cascade : true})
+    @OneToOne(() => vehicleOwner,{cascade : true, onDelete: 'CASCADE'})
     @JoinColumn({name : 'ownerID'})
     ownerID : vehicleOwner
 

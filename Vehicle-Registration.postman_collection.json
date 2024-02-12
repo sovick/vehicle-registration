@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "70d041cd-8252-4400-a1b5-2038f4dae55e",
+		"name": "Vehicle-Registration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30955129"
+	},
+	"item": [
+		{
+			"name": "register-manufacturer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\" : {\n        \"name\" : \"Mahindra\",\n        \"country\" :\"India\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/manufacturer/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"manufacturer",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-new-vehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\" : {\n        \"manufacturerName\" : \"Mahindra\",\n        \"modelName\" : \"Scorpio\",\n        \"year\" : 2021,\n        \"fuelType\" : \"Diesel\",\n        \"firstName\" : \"Sovick\",\n        \"lastName\" : \"Konar\",\n        \"email\" : \"sovick.konar@gmail.com\",\n        \"address\" : \"Kolkata, WB\",\n        \"VIN\" :\"sdfs123123nksI\",\n        \"color\" : \"red\",\n        \"purchaseDate\" : \"12-12-2022\",\n        \"purchasePrice\" : 1299.80\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/vehicle/add-new",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vehicle",
+						"add-new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-all-vehicle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/vehicle/lists",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vehicle",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-single-vehicle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/vehicle/list/sdfs123123nks",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vehicle",
+						"list",
+						"sdfs123123nks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-single-vehicle",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\" : {\n        \"color\" : \"Green\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/vehicle/update/sdfs123123nks",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vehicle",
+						"update",
+						"sdfs123123nks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-single-vehicle",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/vehicle/delete/sdfs123123nksI",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vehicle",
+						"delete",
+						"sdfs123123nksI"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

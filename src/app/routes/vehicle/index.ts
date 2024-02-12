@@ -11,4 +11,8 @@ vehicleRouter.get('/lists',vehicleControllerObj.getAllVehicles);
 
 vehicleRouter.get('/list/:vin',vehicleControllerObj.getVehicle);
 
+vehicleRouter.put('/update/:vin',vehicleControllerObj.updateVehicleDetails);
+
+vehicleRouter.delete('/delete/:vin',vehicleControllerObj.deleteVehicleDetails);
+
 export default vehicleRouter;
